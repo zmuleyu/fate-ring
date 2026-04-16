@@ -33,7 +33,8 @@ export function useCardRing() {
   selectedCardsRef.current = selectedCards
 
   // The active (front-facing) card index based on current rotation
-  const activeIndex = Math.round((-rotation / stepAngle + CARD_COUNT * 100) % CARD_COUNT)
+  // Apply double modulo to guard against Math.round rounding 21.5→22 (out of bounds)
+  const activeIndex = Math.round((-rotation / stepAngle + CARD_COUNT * 100) % CARD_COUNT) % CARD_COUNT
 
   const stopInertia = useCallback(() => {
     if (animFrameRef.current !== null) {
