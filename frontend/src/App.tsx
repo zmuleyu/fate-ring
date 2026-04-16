@@ -99,6 +99,19 @@ export default function App() {
     }
   }, [gesture, phase, activeIndex, cards, selectedCards, selectCard, resetSelection])
 
+  const [sentToParent, setSentToParent] = useState(false)
+  const isEmbedded = window !== window.parent
+
+  const sendToParent = (result: ReadingResult) => {
+    if (!isEmbedded) return
+    window.parent.postMessage({
+      type: 'fate-ring-result',
+      cards: selectedCards.map(s => ({ nameCn: s.card.nameCn, reversed: s.reversed, position: s.position })),
+      reading: result,
+    }, '*')
+    setSentToParent(true)
+  }
+
   const handleReveal = async () => {
     setPhase('loading')
     setError(null)
@@ -107,7 +120,10 @@ export default function App() {
       const result = await fetchReading(selectedCards)
       setReading(result)
       setPhase('reading')
-      setTimeout(() => setRevealed(true), 200)
+      setTimeout(() => {
+        setRevealed(true)
+        sendToParent(result)
+      }, 200)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'AI 服务暂时不可用')
       setPhase('selection')
@@ -248,9 +264,20 @@ export default function App() {
             )}
           </div>
 
-          <button className="btn-reset" onClick={handleReset}>
-            重新抽牌
-          </button>
+          <div className="reading-actions">
+            {isEmbedded && (
+              <button
+                className={`btn-send-parent${sentToParent ? ' btn-send-parent--sent' : ''}`}
+                onClick={() => reading && sendToParent(reading)}
+                disabled={sentToParent}
+              >
+                {sentToParent ? '✅ 已发送给伴侣' : '📨 发送给伴侣'}
+              </button>
+            )}
+            <button className="btn-reset" onClick={handleReset}>
+              重新抽牌
+            </button>
+          </div>
         </div>
       )}
     </div>

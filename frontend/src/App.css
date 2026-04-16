@@ -349,3 +349,38 @@
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ===== TCF Integration ===== */
+
+.reading-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.btn-send-parent {
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.2), rgba(60, 50, 180, 0.3));
+  border: 1px solid rgba(108, 99, 255, 0.5);
+  color: rgba(200, 195, 255, 0.9);
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-send-parent:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.35), rgba(60, 50, 180, 0.45));
+  border-color: rgba(108, 99, 255, 0.7);
+}
+
+.btn-send-parent--sent,
+.btn-send-parent:disabled {
+  opacity: 0.6;
+  cursor: default;
+  border-color: rgba(80, 200, 120, 0.4);
+  color: rgba(150, 220, 170, 0.8);
+}
