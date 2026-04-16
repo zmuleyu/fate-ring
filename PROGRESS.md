@@ -70,4 +70,17 @@
 - [x] ThreeCardRing.tsx import 位置修正
 - [x] useCardRing inertia snap 跳过已选中位置（修复第3张牌无法选中的 bug）
 
+## git init + E2E 验证（2026-04-16）✅
+- [x] git init + .gitignore（排除 node_modules/dist/.env/__pycache__）
+- [x] 初始提交 `7cf8f90`（68文件）
+- [x] 修复 activeIndex 越界 bug（double % CARD_COUNT）
+- [x] 修复 SiliconFlow AI：timeout 90s + max_tokens 1000 + 60字/字段
+- [x] 修复 JSON 字段名漂移（alias 映射）
+- [x] E2E 全流程验证：选牌→AI解读→Reading页→重置，零JS错误
+- [x] 提交修复 `63c253c`
+
 ## Phase 6 — 部署 + AOC 集成（待）
+- [ ] 静态部署前端（Vercel / Cloudflare Pages）
+- [ ] 后端部署（Railway / Fly.io）
+- [ ] AOC Electron 插件接口设计
+- [ ] 嵌入 AOC 作为可选模块
