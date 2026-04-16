@@ -36,7 +36,7 @@ async def get_reading(cards: list[dict]) -> dict:
             {"role": "user", "content": prompt},
         ],
         "temperature": 0.85,
-        "max_tokens": 2048,
+        "max_tokens": 1000,  # 4 fields × ~200 chars; 2048 was too slow
         "response_format": {"type": "json_object"},
     }
 
