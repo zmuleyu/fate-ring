@@ -1,0 +1,70 @@
+.three-ring-container {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  cursor: grab;
+  user-select: none;
+}
+
+.three-ring-container:active {
+  cursor: grabbing;
+}
+
+/* Canvas fills the container */
+.three-ring-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Active card name label — centred below the front card position */
+.three-ring-label {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  pointer-events: none;
+  text-align: center;
+}
+
+.three-ring-card-cn {
+  font-size: 12px;
+  color: #d4af37;
+  font-family: serif;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+
+.three-ring-hint {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.5px;
+}
+
+.three-ring-selected {
+  font-size: 9px;
+  color: rgba(100, 200, 255, 0.9);
+  letter-spacing: 0.5px;
+}
+
+/* Centre concentric circle indicator (matches reference video) */
+.ring-center-indicator {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #d4af37 40%, rgba(212, 175, 55, 0.6) 100%);
+  box-shadow:
+    0 0 6px rgba(212, 175, 55, 0.4),
+    0 0 0 18px rgba(212, 175, 55, 0.06),
+    0 0 0 40px rgba(212, 175, 55, 0.04),
+    0 0 0 65px rgba(212, 175, 55, 0.02);
+  pointer-events: none;
+}

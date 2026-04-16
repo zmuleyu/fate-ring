@@ -1,0 +1,351 @@
+/* ===== THE FATE RING — App Styles ===== */
+
+.app {
+  min-height: 100vh;
+  background: transparent;
+  color: #e8e0d5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: 40px;
+}
+
+/* Header */
+.app-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 28px 20px 16px;
+}
+
+.app-title {
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 400;
+  letter-spacing: 8px;
+  color: #d4af37;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+  margin: 0 0 6px;
+}
+
+.app-subtitle {
+  font-size: 12px;
+  color: rgba(212, 175, 55, 0.6);
+  letter-spacing: 3px;
+  margin: 0;
+  font-family: serif;
+}
+
+/* Slot area */
+.slot-area {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 16px;
+  padding: 0 20px;
+}
+
+.slot-row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.selection-hint {
+  font-size: 12px;
+  color: rgba(212, 175, 55, 0.5);
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 0;
+}
+
+/* Buttons */
+.btn-reveal {
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  color: #d4af37;
+  font-family: serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  padding: 10px 32px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.btn-reveal:hover {
+  background: rgba(212, 175, 55, 0.1);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.btn-reveal--pulse {
+  animation: btnPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes btnPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+  50% { box-shadow: 0 0 20px 4px rgba(212, 175, 55, 0.25); }
+}
+
+.btn-reset {
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: rgba(212, 175, 55, 0.6);
+  font-family: serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  padding: 8px 24px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-reset:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  color: #d4af37;
+}
+
+/* Reading page */
+.reading-page {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 20px;
+  gap: 20px;
+}
+
+.reading-title {
+  font-family: serif;
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 400;
+  color: #d4af37;
+  letter-spacing: 4px;
+  margin: 0;
+}
+
+.reading-subtitle {
+  font-size: 10px;
+  color: rgba(212, 175, 55, 0.4);
+  letter-spacing: 4px;
+  margin: -12px 0 0;
+  text-transform: uppercase;
+}
+
+.reading-cards {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+
+.reading-interpretations {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.reading-card-block {
+  background: rgba(212, 175, 55, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 6px;
+  padding: 14px 18px;
+  animation: fadeSlideIn 0.5s ease both;
+}
+
+.reading-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.reading-card-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(212, 175, 55, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #d4af37;
+  flex-shrink: 0;
+  font-family: serif;
+}
+
+.reading-card-pos {
+  font-size: 10px;
+  color: rgba(212, 175, 55, 0.5);
+  letter-spacing: 2px;
+}
+
+.reading-card-cn {
+  font-size: 14px;
+  color: #d4af37;
+  font-family: serif;
+}
+
+.reading-card-keywords {
+  font-size: 12px;
+  color: rgba(232, 224, 213, 0.7);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.reading-overall {
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin-top: 4px;
+  animation: fadeSlideIn 0.5s ease 0.7s both;
+}
+
+.reading-overall-header {
+  font-size: 11px;
+  color: #d4af37;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.reading-overall-text {
+  font-size: 13px;
+  color: rgba(232, 224, 213, 0.8);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ===== Loading Page ===== */
+
+.loading-page {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 20px;
+  min-height: 60vh;
+}
+
+.loading-orb {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-top-color: #d4af37;
+  animation: spin 1.2s linear infinite;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.2), inset 0 0 20px rgba(212, 175, 55, 0.05);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 16px;
+  color: #d4af37;
+  letter-spacing: 3px;
+  font-family: serif;
+  margin: 0;
+}
+
+.loading-sub {
+  font-size: 12px;
+  color: rgba(232, 224, 213, 0.4);
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* ===== Additional Reading Styles ===== */
+
+.reading-card-reversed {
+  font-size: 10px;
+  color: rgba(180, 100, 100, 0.8);
+  border: 1px solid rgba(180, 100, 100, 0.3);
+  border-radius: 3px;
+  padding: 1px 5px;
+  letter-spacing: 1px;
+}
+
+.reading-card-text {
+  font-size: 13px;
+  color: rgba(232, 224, 213, 0.85);
+  line-height: 1.75;
+  margin: 8px 0 0;
+  white-space: pre-wrap;
+}
+
+.reading-error {
+  color: rgba(220, 100, 100, 0.8);
+  font-size: 13px;
+  text-align: center;
+  margin: 8px 0;
+  padding: 8px 16px;
+  border: 1px solid rgba(220, 100, 100, 0.2);
+  border-radius: 4px;
+  background: rgba(220, 100, 100, 0.05);
+}
+
+/* ===== Golden Arc Trail ===== */
+
+.arc-trail {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  width: 4px;
+  height: 80px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, rgba(212, 175, 55, 0.8), rgba(212, 175, 55, 0));
+  border-radius: 2px;
+  animation: arcFly 0.5s ease-out both;
+  pointer-events: none;
+  z-index: 10;
+  filter: blur(1px);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+}
+
+@keyframes arcFly {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-40px) scaleY(0.3);
+  }
+  30% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px) scaleY(0.5);
+  }
+}
+
+/* ===== Reading Page Upgrades ===== */
+
+.reading-card-pos-en {
+  font-size: 9px;
+  color: rgba(212, 175, 55, 0.35);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.reading-card-block:nth-child(1) { animation-delay: 0.1s; }
+.reading-card-block:nth-child(2) { animation-delay: 0.3s; }
+.reading-card-block:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
