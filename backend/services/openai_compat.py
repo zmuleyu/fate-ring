@@ -7,7 +7,7 @@ import httpx
 
 from prompts.tarot import SYSTEM_PROMPT, build_reading_prompt
 
-TIMEOUT = 45
+TIMEOUT = 90  # SiliconFlow Chinese JSON responses can take 30-40s
 
 
 def _parse_json(text: str) -> dict:

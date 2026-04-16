@@ -231,6 +231,7 @@ export default function ThreeCardRing({
     // Treat as click if barely moved
     if (dx < 20 && selectedCards.length < 3) {
       const card = cards[activeIndexAtDownRef.current]
+      if (!card) return // guard against out-of-bounds index
       if (!selectedCards.some(s => s.card.id === card.id)) {
         onSelectCard(card)
         // Sparkle burst + flash pulse

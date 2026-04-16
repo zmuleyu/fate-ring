@@ -114,6 +114,7 @@ export function useCardRing() {
   }, [startInertia])
 
   const selectCard = useCallback((card: TarotCard) => {
+    if (!card) return // guard: activeIndex edge case can yield undefined
     setSelectedCards(prev => {
       if (prev.find(s => s.card.id === card.id)) return prev
       if (prev.length >= 3) return prev
