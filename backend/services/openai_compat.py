@@ -11,11 +11,29 @@ TIMEOUT = 90  # SiliconFlow Chinese JSON responses can take 30-40s
 
 
 def _parse_json(text: str) -> dict:
-    # Strip <think>...</think> blocks (Qwen3 reasoning traces)
+    # Strip <think>...</think> blocks (Qwen reasoning traces)
     text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL)
     # Strip markdown fences
     cleaned = re.sub(r"```(?:json)?\s*", "", text).strip().rstrip("`").strip()
-    return json.loads(cleaned)
+    data = json.loads(cleaned)
+
+    # Normalize field name aliases the model sometimes uses
+    aliases = {
+        "past":    ["past", "过去", "past_reading", "card1", "card_1"],
+        "present": ["present", "现在", "present_reading", "read", "reading", "card2", "card_2"],
+        "future":  ["future", "未来", "future_reading", "card3", "card_3"],
+        "overall": ["overall", "整体", "summary", "conclusion", "综合", "overall_reading"],
+    }
+    result: dict = {}
+    for canonical, candidates in aliases.items():
+        for key in candidates:
+            if key in data:
+                result[canonical] = data[key]
+                break
+        if canonical not in result:
+            result[canonical] = ""
+
+    return result
 
 
 async def get_reading(cards: list[dict]) -> dict:
